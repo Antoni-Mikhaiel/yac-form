@@ -322,6 +322,14 @@
       const v = fieldValue(name);
       return v ? toNumber(v) : null;
     }
+    // money is stored as clean digits (strip grouping) so the admin can
+    // sort / filter by amount; the display keeps the grouped version.
+    function moneyOrNull(name) {
+      const v = fieldValue(name);
+      if (!v) return null;
+      const n = toNumber(v);
+      return n === null ? v : String(n);
+    }
 
     function collect() {
       return {
@@ -342,13 +350,13 @@
         floor: orNull('floor'),
         finishing: fieldValue('finish'),
         status: fieldValue('status'),
-        asking_price: orNull('askingPrice'),
+        asking_price: moneyOrNull('askingPrice'),
         negotiable: orNull('nego'),
         payment_method: orNull('pay'),
-        down_payment: orNull('downPayment'),
+        down_payment: moneyOrNull('downPayment'),
         installment_period: orNull('installmentPeriod'),
-        installment_amount: orNull('installmentAmount'),
-        monthly_rent: orNull('monthlyRent'),
+        installment_amount: moneyOrNull('installmentAmount'),
+        monthly_rent: moneyOrNull('monthlyRent'),
         contract_duration: orNull('contractDuration'),
         features: featureValues(),
         description: orNull('description'),
@@ -425,11 +433,66 @@
     const again = document.getElementById('submitAnother');
     if (again) again.addEventListener('click', () => location.reload());
 
-    // re-translate live text (errors, thumb labels, upload note) on toggle
+    /* ---------- input formatting + small conveniences ---------- */
+    const F = window.YAC.format;
+
+    // live thousands-grouping for money + area
+    ['askingPrice', 'downPayment', 'installmentAmount', 'monthlyRent', 'area'].forEach((name) => {
+      const el = form.elements[name];
+      if (el && F) el.addEventListener('input', () => F.liveFormat(el, F.groupAmount));
+    });
+    // integers only for room counts
+    ['bedrooms', 'bathrooms'].forEach((name) => {
+      const el = form.elements[name];
+      if (el && F) el.addEventListener('input', () => F.liveFormat(el, (s) => s.replace(/[^\d٠-٩]/g, '')));
+    });
+
+    // phone + whatsapp: sanitize while typing, tidy grouping on blur
+    const phoneEl = form.elements['phone'];
+    const waEl = form.elements['whatsapp'];
+    const waSame = document.getElementById('waSame');
+    [phoneEl, waEl].forEach((el) => {
+      if (!el || !F) return;
+      el.addEventListener('input', () => { if (!el.readOnly) F.liveFormat(el, F.sanitizePhone); });
+      el.addEventListener('blur', () => {
+        if (el.readOnly) return;
+        el.value = F.formatPhone(el.value);
+        if (waSame && waSame.checked && el === phoneEl && waEl) waEl.value = el.value;
+        if (attempted) { validate(); renderErrors(); }
+      });
+    });
+
+    // WhatsApp "same as phone" — mirror + lock
+    function syncWa() {
+      if (!waSame || !waEl || !phoneEl) return;
+      if (waSame.checked) { waEl.value = phoneEl.value; waEl.readOnly = true; }
+      else { waEl.readOnly = false; }
+      if (attempted) { validate(); renderErrors(); }
+    }
+    if (waSame && phoneEl && waEl) {
+      waSame.addEventListener('change', syncWa);
+      phoneEl.addEventListener('input', () => { if (waSame.checked) waEl.value = phoneEl.value; });
+    }
+
+    // description character counter
+    const descEl = form.elements['description'];
+    const descCount = document.getElementById('descCount');
+    function updateCount() {
+      if (!descEl || !descCount) return;
+      const max = parseInt(descEl.getAttribute('maxlength'), 10) || 1200;
+      const left = max - descEl.value.length;
+      descCount.textContent = i18n.lang === 'ar'
+        ? arDigits(left) + ' حرف متبقٍ'
+        : left + ' characters left';
+    }
+    if (descEl) { descEl.addEventListener('input', updateCount); updateCount(); }
+
+    // re-translate live text (errors, thumb labels, upload note, counter) on toggle
     i18n.onChange(() => {
       if (attempted) renderErrors();
       renderThumbs();
       if (uploadNote && uploadNote._dict) setNote(uploadNote._dict);
+      updateCount();
     });
 
     refreshConditionals();

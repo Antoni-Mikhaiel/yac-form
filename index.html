@@ -57,7 +57,10 @@
         <input id="phone" name="phone" type="tel" required autocomplete="tel" inputmode="tel" data-ph-en="+20 1XX XXX XXXX" data-ph-ar="+20 1XX XXX XXXX">
       </div>
       <div class="field">
-        <label class="lbl" for="whatsapp"><span data-en="WhatsApp number" data-ar="رقم واتساب">WhatsApp number</span><span class="req">*</span></label>
+        <div class="lbl-row">
+          <label class="lbl" for="whatsapp"><span data-en="WhatsApp number" data-ar="رقم واتساب">WhatsApp number</span><span class="req">*</span></label>
+          <label class="mini"><input type="checkbox" id="waSame"><span data-en="Same as phone" data-ar="نفس رقم الهاتف">Same as phone</span></label>
+        </div>
         <input id="whatsapp" name="whatsapp" type="tel" required autocomplete="tel" inputmode="tel" data-ph-en="+20 1XX XXX XXXX" data-ph-ar="+20 1XX XXX XXXX">
       </div>
       <div class="field">
@@ -222,7 +225,7 @@
         </div>
         <div class="field">
           <label class="lbl" for="installmentAmount"><span data-en="Installment amount (EGP)" data-ar="قيمة القسط (ج.م)">Installment amount (EGP)</span></label>
-          <input id="installmentAmount" name="installmentAmount" type="text" inputmode="numeric" data-ph-en="e.g. 25,000 / mo" data-ph-ar="مثال: ٢٥٬٠٠٠ / شهر">
+          <input id="installmentAmount" name="installmentAmount" type="text" inputmode="numeric" data-ph-en="e.g. 25,000" data-ph-ar="مثال: ٢٥٬٠٠٠">
         </div>
       </div>
     </div>
@@ -233,7 +236,7 @@
       <div class="grid">
         <div class="field">
           <label class="lbl" for="monthlyRent"><span data-en="Monthly rent (EGP)" data-ar="قيمة الإيجار الشهري (ج.م)">Monthly rent (EGP)</span><span class="req" hidden>*</span></label>
-          <input id="monthlyRent" name="monthlyRent" type="text" inputmode="numeric" data-ph-en="e.g. 30,000 / mo" data-ph-ar="مثال: ٣٠٬٠٠٠ / شهر">
+          <input id="monthlyRent" name="monthlyRent" type="text" inputmode="numeric" data-ph-en="e.g. 30,000" data-ph-ar="مثال: ٣٠٬٠٠٠">
         </div>
         <div class="field">
           <label class="lbl" for="contractDuration"><span data-en="Required contract duration" data-ar="مدة العقد المطلوبة">Required contract duration</span></label>
@@ -282,6 +285,7 @@
     <div class="field col-2">
       <label class="lbl" for="description"><span data-en="Write a short description of the unit and its highlights" data-ar="اكتب وصفاً مختصراً للوحدة ومميزاتها">Write a short description of the unit and its highlights</span> <span class="opt" data-en="(optional)" data-ar="(اختياري)">(optional)</span></label>
       <textarea id="description" name="description" maxlength="1200" data-ph-en="Bright corner unit with an open landscape view, walking distance to the clubhouse…" data-ph-ar="وحدة ركنية مضيئة بفيو مفتوح على اللاندسكيب، على بعد خطوات من النادي…"></textarea>
+      <div class="counter" id="descCount" aria-hidden="true"></div>
     </div>
   </section>
 
@@ -337,6 +341,7 @@
 <script defer src="js/config.js"></script>
 <script defer src="js/i18n.js"></script>
 <script defer src="js/store.js"></script>
+<script defer src="js/format.js"></script>
 <script defer src="js/form.js"></script>
 </body>
 </html>

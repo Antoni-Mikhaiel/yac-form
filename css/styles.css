@@ -176,6 +176,18 @@ label.lbl{
 .req{color:var(--gold);margin-inline-start:.15rem}
 .opt{color:var(--silver);font-size:.78em;font-weight:400}
 
+/* label row with an inline mini-toggle (e.g. "Same as phone") */
+.lbl-row{display:flex;align-items:center;justify-content:space-between;gap:.75rem}
+.mini{display:inline-flex;align-items:center;gap:.35rem;cursor:pointer;
+  font-size:.74rem;font-weight:400;color:var(--silver);white-space:nowrap;user-select:none}
+.mini input{width:14px;height:14px;accent-color:var(--maroon);cursor:pointer}
+.mini:hover{color:var(--sand)}
+input[readonly]{opacity:.6;cursor:not-allowed}
+
+/* live character counter under the description */
+.counter{font-size:.72rem;color:var(--silver);text-align:end;margin-top:.1rem;
+  font-variant-numeric:tabular-nums}
+
 input[type=text],input[type=tel],input[type=email],input[type=number],textarea{
   width:100%;background:var(--field);
   border:1px solid var(--gunmetal);border-radius:var(--radius);
