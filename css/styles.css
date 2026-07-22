@@ -35,6 +35,8 @@ html[lang="ar"]{
   --f-body:var(--f-ar-body);
 }
 *{box-sizing:border-box;margin:0;padding:0}
+/* the hidden attribute must win over any display rule (e.g. .gate{display:flex}) */
+[hidden]{display:none!important}
 html{scroll-behavior:smooth}
 body{
   background:
