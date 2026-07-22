@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#141413">
+<meta name="description" content="List a property for sale or rent with YAC — Your Address Connectors.">
+<title>YAC — Property Listing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Ubuntu:wght@300;400;500;700&family=El+Messiri:wght@400;500;600;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<noscript>
+  <div class="noscript">This form needs JavaScript enabled to work. · هذا النموذج يحتاج إلى تفعيل الجافاسكربت.</div>
+</noscript>
+
+<nav class="nav">
+  <div class="brand">
+    <span class="mark">YAC<small>.</small></span>
+    <span class="tag" data-en="Your Address Connectors" data-ar="عنوانك الموصول">Your Address Connectors</span>
+  </div>
+  <button class="lang-btn" id="langBtn" type="button" aria-label="Switch language / تغيير اللغة">
+    <svg class="globe" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 010 18M12 3a15 15 0 000 18"/></svg>
+    <span class="cur" id="langCur">العربية</span>
+    <span class="alt" id="langAlt">/ EN</span>
+  </button>
+</nav>
+
+<header class="hero">
+  <div class="eyebrow" data-en="Real Estate Agency" data-ar="وكالة عقارية">Real Estate Agency</div>
+  <h1 data-html data-en="List a Property <em>for Sale or Rent</em>" data-ar="سجّل <em>وحدة عقارية</em> للبيع أو للإيجار">List a Property <em>for Sale or Rent</em></h1>
+  <p data-en="Share your unit's details and our team will connect it with the right buyer or tenant." data-ar="شاركنا بيانات وحدتك وفريقنا سيوصّلها بالمشتري أو المستأجر المناسب.">Share your unit's details and our team will connect it with the right buyer or tenant.</p>
+  <div class="rule"></div>
+</header>
+
+<form id="listingForm" novalidate>
+
+  <!-- 1 · OWNER -->
+  <section class="section">
+    <div class="sec-head">
+      <div class="sec-num">01</div>
+      <div class="sec-titles">
+        <span class="kicker" data-en="Section One" data-ar="القسم الأول">Section One</span>
+        <h2 data-en="Owner Details" data-ar="بيانات المالك">Owner Details</h2>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="field">
+        <label class="lbl" for="fullName"><span data-en="Full name" data-ar="الاسم بالكامل">Full name</span><span class="req">*</span></label>
+        <input id="fullName" name="fullName" type="text" required autocomplete="name" data-ph-en="e.g. Ahmed Hassan" data-ph-ar="مثال: أحمد حسن">
+      </div>
+      <div class="field">
+        <label class="lbl" for="phone"><span data-en="Phone number" data-ar="رقم الهاتف">Phone number</span><span class="req">*</span></label>
+        <input id="phone" name="phone" type="tel" required autocomplete="tel" inputmode="tel" data-ph-en="+20 1XX XXX XXXX" data-ph-ar="+20 1XX XXX XXXX">
+      </div>
+      <div class="field">
+        <label class="lbl" for="whatsapp"><span data-en="WhatsApp number" data-ar="رقم واتساب">WhatsApp number</span><span class="req">*</span></label>
+        <input id="whatsapp" name="whatsapp" type="tel" required autocomplete="tel" inputmode="tel" data-ph-en="+20 1XX XXX XXXX" data-ph-ar="+20 1XX XXX XXXX">
+      </div>
+      <div class="field">
+        <label class="lbl" for="email"><span data-en="Email" data-ar="البريد الإلكتروني">Email</span> <span class="opt" data-en="(optional)" data-ar="(اختياري)">(optional)</span></label>
+        <input id="email" name="email" type="email" autocomplete="email" data-ph-en="name@example.com" data-ph-ar="name@example.com">
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 · LISTING TYPE -->
+  <section class="section">
+    <div class="sec-head">
+      <div class="sec-num">02</div>
+      <div class="sec-titles">
+        <span class="kicker" data-en="Section Two" data-ar="القسم الثاني">Section Two</span>
+        <h2 data-en="Listing Type" data-ar="نوع العرض">Listing Type</h2>
+      </div>
+    </div>
+    <fieldset>
+      <legend><span data-en="Transaction type" data-ar="نوع العملية">Transaction type</span><span class="req">*</span></legend>
+      <div class="choices" id="opGroup">
+        <label class="chip deal"><input type="radio" name="operation" value="sale"><span data-en="Sale" data-ar="بيع">Sale</span></label>
+        <label class="chip deal"><input type="radio" name="operation" value="rent"><span data-en="Rent" data-ar="إيجار">Rent</span></label>
+      </div>
+    </fieldset>
+    <fieldset class="sub">
+      <legend><span data-en="Property type" data-ar="نوع العقار">Property type</span><span class="req">*</span></legend>
+      <div class="choices">
+        <label class="chip"><input type="radio" name="ptype" value="apartment"><span data-en="Apartment" data-ar="شقة">Apartment</span></label>
+        <label class="chip"><input type="radio" name="ptype" value="villa"><span data-en="Villa" data-ar="فيلا">Villa</span></label>
+        <label class="chip"><input type="radio" name="ptype" value="townhouse"><span data-en="Townhouse" data-ar="تاون هاوس">Townhouse</span></label>
+        <label class="chip"><input type="radio" name="ptype" value="twinhouse"><span data-en="Twin house" data-ar="توين هاوس">Twin house</span></label>
+        <label class="chip"><input type="radio" name="ptype" value="penthouse"><span data-en="Penthouse" data-ar="بنتهاوس">Penthouse</span></label>
+        <label class="chip"><input type="radio" name="ptype" value="duplex"><span data-en="Duplex" data-ar="دوبلكس">Duplex</span></label>
+        <label class="chip"><input type="radio" name="ptype" value="retail"><span data-en="Retail shop" data-ar="محل تجاري">Retail shop</span></label>
+        <label class="chip"><input type="radio" name="ptype" value="office"><span data-en="Office" data-ar="مكتب إداري">Office</span></label>
+        <label class="chip"><input type="radio" name="ptype" value="clinic"><span data-en="Clinic" data-ar="عيادة">Clinic</span></label>
+        <label class="chip"><input type="radio" name="ptype" value="warehouse"><span data-en="Warehouse" data-ar="مخزن">Warehouse</span></label>
+        <label class="chip"><input type="radio" name="ptype" value="land"><span data-en="Land" data-ar="أرض">Land</span></label>
+        <label class="chip"><input type="radio" name="ptype" value="other"><span data-en="Other" data-ar="أخرى">Other</span></label>
+      </div>
+    </fieldset>
+  </section>
+
+  <!-- 3 · LOCATION -->
+  <section class="section">
+    <div class="sec-head">
+      <div class="sec-num">03</div>
+      <div class="sec-titles">
+        <span class="kicker" data-en="Section Three" data-ar="القسم الثالث">Section Three</span>
+        <h2 data-en="Property Location" data-ar="موقع العقار">Property Location</h2>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="field">
+        <label class="lbl" for="city"><span data-en="City" data-ar="المدينة">City</span><span class="req">*</span></label>
+        <input id="city" name="city" type="text" required autocomplete="address-level2" data-ph-en="e.g. New Cairo" data-ph-ar="مثال: القاهرة الجديدة">
+      </div>
+      <div class="field">
+        <label class="lbl" for="district"><span data-en="District / Area" data-ar="المنطقة / الحي">District / Area</span><span class="req">*</span></label>
+        <input id="district" name="district" type="text" required autocomplete="address-level3" data-ph-en="e.g. Fifth Settlement" data-ph-ar="مثال: التجمع الخامس">
+      </div>
+      <div class="field">
+        <label class="lbl" for="project"><span data-en="Project or compound name" data-ar="اسم المشروع أو الكمبوند">Project or compound name</span> <span class="opt" data-en="(optional)" data-ar="(اختياري)">(optional)</span></label>
+        <input id="project" name="project" type="text" data-ph-en="e.g. Mivida" data-ph-ar="مثال: ميفيدا">
+      </div>
+      <div class="field">
+        <label class="lbl" for="plotNumber"><span data-en="Plot or building number" data-ar="رقم القطعة أو المبنى">Plot or building number</span> <span class="opt" data-en="(if any)" data-ar="(إن وجد)">(if any)</span></label>
+        <input id="plotNumber" name="plotNumber" type="text" data-ph-en="e.g. B12" data-ph-ar="مثال: ب١٢">
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · UNIT DETAILS -->
+  <section class="section">
+    <div class="sec-head">
+      <div class="sec-num">04</div>
+      <div class="sec-titles">
+        <span class="kicker" data-en="Section Four" data-ar="القسم الرابع">Section Four</span>
+        <h2 data-en="Unit Details" data-ar="تفاصيل الوحدة">Unit Details</h2>
+      </div>
+    </div>
+    <div class="grid thirds">
+      <div class="field">
+        <label class="lbl" for="area"><span data-en="Area (m²)" data-ar="المساحة (م²)">Area (m²)</span><span class="req">*</span></label>
+        <input id="area" name="area" type="text" required inputmode="numeric" data-ph-en="e.g. 165" data-ph-ar="مثال: ١٦٥">
+      </div>
+      <div class="field">
+        <label class="lbl" for="bedrooms"><span data-en="Bedrooms" data-ar="عدد الغرف">Bedrooms</span> <span class="opt" data-en="(optional)" data-ar="(اختياري)">(optional)</span></label>
+        <input id="bedrooms" name="bedrooms" type="text" inputmode="numeric" data-ph-en="e.g. 3" data-ph-ar="مثال: ٣">
+      </div>
+      <div class="field">
+        <label class="lbl" for="bathrooms"><span data-en="Bathrooms" data-ar="عدد الحمامات">Bathrooms</span> <span class="opt" data-en="(optional)" data-ar="(اختياري)">(optional)</span></label>
+        <input id="bathrooms" name="bathrooms" type="text" inputmode="numeric" data-ph-en="e.g. 2" data-ph-ar="مثال: ٢">
+      </div>
+      <div class="field">
+        <label class="lbl" for="floor"><span data-en="Floor" data-ar="الدور">Floor</span> <span class="opt" data-en="(optional)" data-ar="(اختياري)">(optional)</span></label>
+        <input id="floor" name="floor" type="text" data-ph-en="e.g. 4th" data-ph-ar="مثال: الرابع">
+      </div>
+    </div>
+    <fieldset class="sub">
+      <legend><span data-en="Finishing" data-ar="التشطيب">Finishing</span><span class="req">*</span></legend>
+      <div class="choices">
+        <label class="chip"><input type="radio" name="finish" value="unfinished"><span data-en="Unfinished" data-ar="بدون تشطيب">Unfinished</span></label>
+        <label class="chip"><input type="radio" name="finish" value="semi"><span data-en="Semi-finished" data-ar="نصف تشطيب">Semi-finished</span></label>
+        <label class="chip"><input type="radio" name="finish" value="full"><span data-en="Fully finished" data-ar="تشطيب كامل">Fully finished</span></label>
+        <label class="chip"><input type="radio" name="finish" value="superlux"><span data-en="Super lux" data-ar="سوبر لوكس">Super lux</span></label>
+        <label class="chip"><input type="radio" name="finish" value="premium"><span data-en="Premium" data-ar="فاخر">Premium</span></label>
+      </div>
+    </fieldset>
+    <fieldset class="sub">
+      <legend><span data-en="Unit status" data-ar="حالة الوحدة">Unit status</span><span class="req">*</span></legend>
+      <div class="choices">
+        <label class="chip"><input type="radio" name="status" value="ready"><span data-en="Ready to move" data-ar="جاهزة للاستلام">Ready to move</span></label>
+        <label class="chip"><input type="radio" name="status" value="resale"><span data-en="Resale" data-ar="إعادة بيع">Resale</span></label>
+        <label class="chip"><input type="radio" name="status" value="offplan"><span data-en="Under construction" data-ar="تحت الإنشاء">Under construction</span></label>
+      </div>
+    </fieldset>
+  </section>
+
+  <!-- 5 · PRICE & PAYMENT -->
+  <section class="section">
+    <div class="sec-head">
+      <div class="sec-num">05</div>
+      <div class="sec-titles">
+        <span class="kicker" data-en="Section Five" data-ar="القسم الخامس">Section Five</span>
+        <h2 data-en="Price & Payment" data-ar="السعر وطريقة الدفع">Price &amp; Payment</h2>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="field">
+        <label class="lbl" for="askingPrice"><span data-en="Asking price (EGP)" data-ar="السعر المطلوب (ج.م)">Asking price (EGP)</span><span class="req">*</span></label>
+        <input id="askingPrice" name="askingPrice" type="text" inputmode="numeric" autocomplete="off" data-ph-en="e.g. 4,500,000" data-ph-ar="مثال: ٤٬٥٠٠٬٠٠٠">
+      </div>
+      <fieldset>
+        <legend data-en="Negotiable?" data-ar="السعر قابل للتفاوض؟">Negotiable?</legend>
+        <div class="choices">
+          <label class="chip"><input type="radio" name="nego" value="yes"><span data-en="Yes" data-ar="نعم">Yes</span></label>
+          <label class="chip"><input type="radio" name="nego" value="no"><span data-en="No" data-ar="لا">No</span></label>
+        </div>
+      </fieldset>
+    </div>
+    <fieldset class="sub">
+      <legend><span data-en="Payment method" data-ar="طريقة الدفع">Payment method</span><span class="req">*</span></legend>
+      <div class="choices" id="payGroup">
+        <label class="chip"><input type="radio" name="pay" value="cash"><span data-en="Cash" data-ar="كاش">Cash</span></label>
+        <label class="chip"><input type="radio" name="pay" value="install"><span data-en="Installments" data-ar="تقسيط">Installments</span></label>
+      </div>
+    </fieldset>
+
+    <!-- conditional: installments -->
+    <div class="conditional" id="installBlock">
+      <div class="cond-note" data-en="Paying by installments" data-ar="التقسيط">Paying by installments</div>
+      <div class="grid thirds">
+        <div class="field">
+          <label class="lbl" for="downPayment"><span data-en="Down payment (EGP)" data-ar="قيمة المقدم (ج.م)">Down payment (EGP)</span></label>
+          <input id="downPayment" name="downPayment" type="text" inputmode="numeric" data-ph-en="e.g. 900,000" data-ph-ar="مثال: ٩٠٠٬٠٠٠">
+        </div>
+        <div class="field">
+          <label class="lbl" for="installmentPeriod"><span data-en="Installment period" data-ar="مدة التقسيط">Installment period</span></label>
+          <input id="installmentPeriod" name="installmentPeriod" type="text" data-ph-en="e.g. 6 years" data-ph-ar="مثال: ٦ سنوات">
+        </div>
+        <div class="field">
+          <label class="lbl" for="installmentAmount"><span data-en="Installment amount (EGP)" data-ar="قيمة القسط (ج.م)">Installment amount (EGP)</span></label>
+          <input id="installmentAmount" name="installmentAmount" type="text" inputmode="numeric" data-ph-en="e.g. 25,000 / mo" data-ph-ar="مثال: ٢٥٬٠٠٠ / شهر">
+        </div>
+      </div>
+    </div>
+
+    <!-- conditional: rent -->
+    <div class="conditional" id="rentBlock">
+      <div class="cond-note" data-en="Listed for rent" data-ar="الإيجار">Listed for rent</div>
+      <div class="grid">
+        <div class="field">
+          <label class="lbl" for="monthlyRent"><span data-en="Monthly rent (EGP)" data-ar="قيمة الإيجار الشهري (ج.م)">Monthly rent (EGP)</span><span class="req" hidden>*</span></label>
+          <input id="monthlyRent" name="monthlyRent" type="text" inputmode="numeric" data-ph-en="e.g. 30,000 / mo" data-ph-ar="مثال: ٣٠٬٠٠٠ / شهر">
+        </div>
+        <div class="field">
+          <label class="lbl" for="contractDuration"><span data-en="Required contract duration" data-ar="مدة العقد المطلوبة">Required contract duration</span></label>
+          <input id="contractDuration" name="contractDuration" type="text" data-ph-en="e.g. 1 year" data-ph-ar="مثال: سنة">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 · FEATURES -->
+  <section class="section">
+    <div class="sec-head">
+      <div class="sec-num">06</div>
+      <div class="sec-titles">
+        <span class="kicker" data-en="Section Six" data-ar="القسم السادس">Section Six</span>
+        <h2 data-en="Unit Features" data-ar="مميزات الوحدة">Unit Features</h2>
+      </div>
+    </div>
+    <fieldset>
+      <legend><span data-en="Select all that apply" data-ar="اختر كل ما ينطبق">Select all that apply</span> <span class="opt" data-en="(optional)" data-ar="(اختياري)">(optional)</span></legend>
+      <div class="choices">
+        <label class="chip box"><input type="checkbox" name="feat" value="openview"><span data-en="Open view" data-ar="فيو مفتوح">Open view</span></label>
+        <label class="chip box"><input type="checkbox" name="feat" value="mainstreet"><span data-en="On a main street" data-ar="على شارع رئيسي">On a main street</span></label>
+        <label class="chip box"><input type="checkbox" name="feat" value="garden"><span data-en="Garden" data-ar="جاردن">Garden</span></label>
+        <label class="chip box"><input type="checkbox" name="feat" value="roof"><span data-en="Roof" data-ar="رووف">Roof</span></label>
+        <label class="chip box"><input type="checkbox" name="feat" value="furnished"><span data-en="Furnished" data-ar="مفروشة">Furnished</span></label>
+        <label class="chip box"><input type="checkbox" name="feat" value="ac"><span data-en="Air-conditioned" data-ar="مكيفة">Air-conditioned</span></label>
+        <label class="chip box"><input type="checkbox" name="feat" value="garage"><span data-en="Garage" data-ar="جراج">Garage</span></label>
+        <label class="chip box"><input type="checkbox" name="feat" value="club"><span data-en="Clubhouse" data-ar="نادي">Clubhouse</span></label>
+        <label class="chip box"><input type="checkbox" name="feat" value="security"><span data-en="Security &amp; guarding" data-ar="أمن وحراسة">Security &amp; guarding</span></label>
+        <label class="chip box"><input type="checkbox" name="feat" value="services"><span data-en="Near services" data-ar="بالقرب من الخدمات">Near services</span></label>
+        <label class="chip box"><input type="checkbox" name="feat" value="transport"><span data-en="Near transport" data-ar="بالقرب من المواصلات">Near transport</span></label>
+      </div>
+    </fieldset>
+  </section>
+
+  <!-- 7 · DESCRIPTION -->
+  <section class="section">
+    <div class="sec-head">
+      <div class="sec-num">07</div>
+      <div class="sec-titles">
+        <span class="kicker" data-en="Section Seven" data-ar="القسم السابع">Section Seven</span>
+        <h2 data-en="Unit Description" data-ar="وصف الوحدة">Unit Description</h2>
+      </div>
+    </div>
+    <div class="field col-2">
+      <label class="lbl" for="description"><span data-en="Write a short description of the unit and its highlights" data-ar="اكتب وصفاً مختصراً للوحدة ومميزاتها">Write a short description of the unit and its highlights</span> <span class="opt" data-en="(optional)" data-ar="(اختياري)">(optional)</span></label>
+      <textarea id="description" name="description" maxlength="1200" data-ph-en="Bright corner unit with an open landscape view, walking distance to the clubhouse…" data-ph-ar="وحدة ركنية مضيئة بفيو مفتوح على اللاندسكيب، على بعد خطوات من النادي…"></textarea>
+    </div>
+  </section>
+
+  <!-- 8 · PHOTOS -->
+  <section class="section">
+    <div class="sec-head">
+      <div class="sec-num">08</div>
+      <div class="sec-titles">
+        <span class="kicker" data-en="Section Eight" data-ar="القسم الثامن">Section Eight</span>
+        <h2 data-en="Photos" data-ar="الصور">Photos</h2>
+      </div>
+    </div>
+    <label class="drop" id="drop">
+      <input type="file" id="fileInput" name="photos" accept="image/jpeg,image/png,image/webp" multiple hidden>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4m0 0L8 8m4-4l4 4M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2"/></svg>
+      <div class="big" data-en="Upload unit photos" data-ar="ارفع صور الوحدة">Upload unit photos</div>
+      <div class="small" data-en="Select several at once, or drag them in — up to 10 (JPG, PNG, WebP)" data-ar="اختر عدة صور مرة واحدة، أو اسحبها هنا — حتى ١٠ (JPG أو PNG أو WebP)">Select several at once, or drag them in — up to 10 (JPG, PNG, WebP)</div>
+    </label>
+    <div class="thumbs" id="thumbs"></div>
+    <p class="upload-note" id="uploadNote" role="status" aria-live="polite"></p>
+  </section>
+
+  <!-- CONSENT -->
+  <div class="consent-wrap">
+    <div class="consent">
+      <input type="checkbox" id="consent" name="consent" required>
+      <label for="consent" data-en="I confirm that all information provided is accurate, and I agree to the use of this data and photos for real estate marketing purposes." data-ar="أقر بأن جميع البيانات المذكورة صحيحة، وأوافق على استخدام هذه البيانات والصور لأغراض التسويق العقاري.">I confirm that all information provided is accurate, and I agree to the use of this data and photos for real estate marketing purposes.</label>
+    </div>
+  </div>
+
+  <div class="submit">
+    <button type="submit" class="send" data-en="Submit Listing" data-ar="إرسال الوحدة">Submit Listing</button>
+    <span class="fine" data-en="A YAC advisor will reach out within 24 hours." data-ar="مستشار من YAC سيتواصل معك خلال ٢٤ ساعة.">A YAC advisor will reach out within 24 hours.</span>
+  </div>
+
+  <footer class="foot" data-en="Your Address Connectors · Real Estate" data-ar="عنوانك الموصول · العقارية">Your Address Connectors · Real Estate</footer>
+</form>
+
+<!-- SUCCESS -->
+<section class="success" id="successPanel" hidden>
+  <div class="check">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+  <h2 data-en="Listing received" data-ar="تم استلام الوحدة">Listing received</h2>
+  <p data-en="Thank you — your property details have been submitted successfully." data-ar="شكراً لك — تم إرسال بيانات وحدتك بنجاح.">Thank you — your property details have been submitted successfully.</p>
+  <p data-en="A YAC advisor will reach out within 24 hours." data-ar="مستشار من YAC سيتواصل معك خلال ٢٤ ساعة.">A YAC advisor will reach out within 24 hours.</p>
+  <span class="ref" id="successRef"></span>
+  <div>
+    <button type="button" id="submitAnother" data-en="Submit another listing" data-ar="إضافة وحدة أخرى">Submit another listing</button>
+  </div>
+</section>
+
+<script defer src="js/config.js"></script>
+<script defer src="js/i18n.js"></script>
+<script defer src="js/store.js"></script>
+<script defer src="js/form.js"></script>
+</body>
+</html>
