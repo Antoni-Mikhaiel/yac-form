@@ -80,6 +80,17 @@ body{
 html[lang="ar"] .brand .tag,html[lang="ar"] .brand .mark{font-family:inherit}
 html[lang="ar"] .brand .tag{letter-spacing:.06em}
 
+.nav-actions{display:flex;align-items:center;gap:.6rem}
+.admin-link{
+  display:inline-flex;align-items:center;
+  color:var(--silver);text-decoration:none;
+  border:1px solid var(--line);border-radius:100px;
+  padding:.5rem 1rem;font-family:var(--f-en-body);font-size:.8rem;letter-spacing:.02em;
+  transition:.25s ease;
+}
+html[lang="ar"] .admin-link{font-family:inherit}
+.admin-link:hover{border-color:var(--gold);color:var(--gold);background:rgba(223,188,125,.06)}
+.admin-link:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 .lang-btn{
   display:inline-flex;align-items:center;gap:.55rem;
   background:transparent;color:var(--cream);

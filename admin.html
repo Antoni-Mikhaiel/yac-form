@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#141413">
+<meta name="robots" content="noindex, nofollow">
+<title>YAC — Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700&family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin">
+
+<!-- ===== Password gate (client-side deterrent only) ===== -->
+<div class="gate" id="gate">
+  <form class="gate-card" id="gateForm">
+    <div class="gate-mark">YAC<small>.</small></div>
+    <h1>Admin access</h1>
+    <p>Enter the password to view submitted listings.</p>
+    <input type="password" id="pw" autocomplete="current-password" placeholder="Password" aria-label="Password" autofocus>
+    <div class="gate-error" id="pwError" hidden>Incorrect password. Try again.</div>
+    <button type="submit">Unlock</button>
+    <a class="gate-back" href="index.html">← Back to the form</a>
+  </form>
+</div>
+
+<!-- ===== Dashboard ===== -->
+<div id="dash" hidden>
+  <header class="admin-nav">
+    <div class="brand">
+      <span class="mark">YAC<small>.</small></span>
+      <span class="admin-tag">Listings admin</span>
+    </div>
+    <div class="admin-actions">
+      <a class="ghost" href="index.html">＋ New listing</a>
+      <button class="ghost" id="refreshBtn" type="button">↻ Refresh</button>
+      <button class="ghost" id="exportBtn" type="button">⤓ Export CSV</button>
+      <button class="ghost danger" id="logoutBtn" type="button">Lock</button>
+    </div>
+  </header>
+
+  <div class="toolbar">
+    <div class="search-wrap">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <input type="search" id="search" placeholder="Search name, phone, city, price…" aria-label="Search listings">
+    </div>
+    <label class="ctl">Group by
+      <select id="groupBy">
+        <option value="none">None</option>
+        <option value="operation">Transaction</option>
+        <option value="property_type">Property type</option>
+        <option value="city">City</option>
+        <option value="finishing">Finishing</option>
+        <option value="status">Status</option>
+      </select>
+    </label>
+    <label class="ctl">Sort
+      <select id="sortBy">
+        <option value="new">Newest</option>
+        <option value="old">Oldest</option>
+        <option value="price">Price high→low</option>
+        <option value="area">Area high→low</option>
+      </select>
+    </label>
+    <span class="count" id="count"></span>
+  </div>
+
+  <main id="results" class="results"></main>
+  <div class="status" id="status"></div>
+</div>
+
+<script defer src="js/config.js"></script>
+<script defer src="js/format.js"></script>
+<script defer src="js/store.js"></script>
+<script defer src="js/admin.js"></script>
+</body>
+</html>
